@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combo Packs | SAKKEES Food Products</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <div class="brand-title">
+          <span class="main-name">SAKKEES</span>
+          <span class="sub-tag">FOOD PRODUCTS</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="flavours.html" class="nav-link">FLAVOURS</a></li>
+          <li><a href="special-pickles.html" class="nav-link">SPECIAL EDITION</a></li>
+          <li><a href="combo-offers.html" class="nav-link active">COMBOS</a></li>
+          <li><a href="story.html" class="nav-link">OUR STORY</a></li>
+          <li><a href="gifts.html" class="nav-link">GIFTS</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-icon-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><span class="cart-count-badge">0</span></button>
+        <button class="hamburger-btn">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="section-padding" style="padding-top: 8rem; background: var(--bg-surface); text-align: center;">
+    <div class="container">
+      <span style="color: var(--gold-primary); letter-spacing: 0.2em; font-size: 0.85rem;">CURATED BOX BUNDLES</span>
+      <h1>More Flavour. More <span class="italic-accent">Together.</span></h1>
+      <p style="font-size: 1.1rem; color: var(--cream-muted); margin-top: 10px;">Pair your favourite pickles together for the ultimate Kerala dining experience.</p>
+    </div>
+  </section>
+
+  <!-- Combos Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="product-grid" id="comboGrid"></div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('comboGrid');
+      grid.innerHTML = SAKKEES_COMBOS.map(combo => `
+          <div class="product-card">
+            <div class="card-image-wrap">
+              <img src="${combo.image}" alt="${combo.name}" class="product-img">
+              <span class="card-badge">${combo.savingsText}</span>
+            </div>
+            <div class="card-content">
+              <span class="category-tag">COMBO BUNDLE</span>
+              <h3 class="product-title">${combo.name}</h3>
+              <ul style="font-size: 0.85rem; color: var(--cream-muted); margin: 0.8rem 0; padding-left: 1.2rem;">
+                ${combo.included.map(item => `<li>${item}</li>`).join('')}
+              </ul>
+              <div class="product-footer">
+                <div class="price-box">
+                  <span class="price-amount">₹${combo.totalPrice}</span>
+                  <span class="price-size" style="text-decoration: line-through; opacity: 0.6;">₹${combo.originalPrice}</span>
+                </div>
+                <button class="add-btn" onclick="cart.addItem({id:'${combo.id}', name:'${combo.name}', image:'${combo.image}'}, 'Combo Box', ${combo.totalPrice})">ADD COMBO</button>
+              </div>
+            </div>
+          </div>
+      `).join('');
+    });
+  </script>
+
+  <!-- Footer & Cart -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p>© 2026 SAKKEES FOOD PRODUCTS. "Where Every Jar Feels Like Home."</p>
+    </div>
+  </footer>
+
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>YOUR SHOPPING BAG</h3>
+      <button class="close-cart-btn">&times;</button>
+    </div>
+    <div class="cart-items-body" id="cartDrawerItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal-row"><span>Subtotal:</span><span class="subtotal-amount" id="cartSubtotal">₹0</span></div>
+      <a href="checkout.html" class="btn-primary" style="width: 100%; text-align: center;">PROCEED TO CHECKOUT</a>
+    </div>
+  </aside>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

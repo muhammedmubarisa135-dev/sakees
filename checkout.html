@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | SAKKEES Food Products</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <div class="brand-title">
+          <span class="main-name">SAKKEES</span>
+          <span class="sub-tag">FOOD PRODUCTS</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="flavours.html" class="nav-link">FLAVOURS</a></li>
+          <li><a href="special-pickles.html" class="nav-link">SPECIAL EDITION</a></li>
+          <li><a href="combo-offers.html" class="nav-link">COMBOS</a></li>
+          <li><a href="story.html" class="nav-link">OUR STORY</a></li>
+          <li><a href="gifts.html" class="nav-link">GIFTS</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-icon-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><span class="cart-count-badge">0</span></button>
+        <button class="hamburger-btn">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Section -->
+  <section class="section-padding" style="padding-top: 8rem;">
+    <div class="container" style="max-width: 1000px;">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;">DIRECT ORDER SYSTEM</span>
+        <h1>Complete Your <span class="italic-accent">Order</span></h1>
+        <p>Orders are dispatched directly via WhatsApp for instant confirmation and personalized service.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;" id="checkoutLayout">
+        
+        <!-- Customer Details Form -->
+        <div style="background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: var(--border-radius-lg); padding: 2rem;">
+          <h3 style="color: var(--gold-light); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(201,154,61,0.2); padding-bottom: 0.5rem;">Delivery Information</h3>
+          
+          <form id="checkoutForm" onsubmit="event.preventDefault(); triggerWhatsAppOrder();" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">Full Name *</label>
+              <input type="text" id="custName" required placeholder="Enter your full name" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div>
+                <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">Phone Number *</label>
+                <input type="tel" id="custPhone" required placeholder="10-digit number" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+              </div>
+              <div>
+                <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">WhatsApp Number</label>
+                <input type="tel" id="custWhatsapp" placeholder="Same as phone" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">Delivery Address *</label>
+              <textarea id="custAddress" required rows="3" placeholder="House name, street name, area..." style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none; font-family: var(--font-sans);"></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div>
+                <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">District</label>
+                <input type="text" id="custDistrict" placeholder="e.g. Ernakulam" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+              </div>
+              <div>
+                <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">Pincode</label>
+                <input type="text" id="custPincode" placeholder="6-digit pincode" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size: 0.85rem; color: var(--gold-light); display: block; margin-bottom: 4px;">Order Notes (Optional)</label>
+              <input type="text" id="custNotes" placeholder="Special spice preference or instructions" style="width: 100%; padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: 4px; color: var(--cream-primary); outline: none;">
+            </div>
+
+            <button type="submit" class="btn-primary btn-whatsapp" style="margin-top: 1rem; width: 100%; text-align: center;">
+              PLACE ORDER VIA WHATSAPP (7025265694)
+            </button>
+          </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: var(--border-radius-lg); padding: 2rem; display: flex; flex-direction: column;">
+          <h3 style="color: var(--gold-light); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(201,154,61,0.2); padding-bottom: 0.5rem;">Order Summary</h3>
+          
+          <div id="checkoutSummaryItems" style="flex-grow: 1; overflow-y: auto; max-height: 300px; margin-bottom: 1.5rem;"></div>
+
+          <div style="border-top: 1px solid var(--gold-border); padding-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span>Items Subtotal:</span>
+              <strong id="summarySubtotal" style="color: var(--gold-light);">₹0</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.85rem; color: var(--cream-muted);">
+              <span>Delivery Charges:</span>
+              <span>Calculated at checkout</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-family: var(--font-serif); color: var(--gold-primary); font-weight: 700; border-top: 1px solid rgba(201,154,61,0.2); padding-top: 8px;">
+              <span>Total:</span>
+              <span id="summaryTotal">₹0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p>© 2026 SAKKEES FOOD PRODUCTS. "Where Every Jar Feels Like Home."</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCheckoutSummary();
+    });
+
+    function renderCheckoutSummary() {
+      const container = document.getElementById('checkoutSummaryItems');
+      const subtotalEl = document.getElementById('summarySubtotal');
+      const totalEl = document.getElementById('summaryTotal');
+
+      if (cart.items.length === 0) {
+        container.innerHTML = `<p style="text-align:center; padding: 2rem 0; color: var(--cream-muted);">Your bag is empty. <a href="flavours.html" style="color: var(--gold-primary);">Explore Flavours</a></p>`;
+        subtotalEl.textContent = '₹0';
+        totalEl.textContent = '₹0';
+        return;
+      }
+
+      container.innerHTML = cart.items.map(item => `
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem;">
+          <div>
+            <strong>${item.name}</strong> (${item.size}) × ${item.quantity}
+          </div>
+          <div style="color: var(--gold-light);">₹${item.price * item.quantity}</div>
+        </div>
+      `).join('');
+
+      subtotalEl.textContent = `₹${cart.getSubtotal()}`;
+      totalEl.textContent = `₹${cart.getSubtotal()}`;
+    }
+
+    function triggerWhatsAppOrder() {
+      if (cart.items.length === 0) {
+        alert('Your shopping bag is empty. Please add items before placing an order.');
+        return;
+      }
+
+      const info = {
+        name: document.getElementById('custName').value,
+        phone: document.getElementById('custPhone').value,
+        address: document.getElementById('custAddress').value + ', ' + (document.getElementById('custDistrict').value || '') + ' ' + (document.getElementById('custPincode').value || ''),
+        notes: document.getElementById('custNotes').value
+      };
+
+      const waUrl = cart.generateWhatsAppOrderLink(info);
+      window.open(waUrl, '_blank');
+    }
+  </script>
+</body>
+</html>

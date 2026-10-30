@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Edition | SAKKEES Food Products</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <div class="brand-title">
+          <span class="main-name">SAKKEES</span>
+          <span class="sub-tag">FOOD PRODUCTS</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="flavours.html" class="nav-link">FLAVOURS</a></li>
+          <li><a href="special-pickles.html" class="nav-link active">SPECIAL EDITION</a></li>
+          <li><a href="combo-offers.html" class="nav-link">COMBOS</a></li>
+          <li><a href="story.html" class="nav-link">OUR STORY</a></li>
+          <li><a href="gifts.html" class="nav-link">GIFTS</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-icon-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><span class="cart-count-badge">0</span></button>
+        <button class="hamburger-btn">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="section-padding" style="padding-top: 8rem; background: var(--bg-surface); text-align: center;">
+    <div class="container">
+      <span style="color: var(--gold-primary); letter-spacing: 0.2em; font-size: 0.85rem;">LIMITED BATCH RESERVE</span>
+      <h1>Not Every Jar Is <span class="italic-accent">Ordinary.</span></h1>
+      <p style="font-size: 1.1rem; color: var(--cream-muted); margin-top: 10px;">Limited flavours. Special moments.</p>
+      
+      <div style="max-width: 600px; margin: 2rem auto; padding: 1.5rem; border: 1px solid var(--gold-border); border-radius: 8px; background: var(--bg-card);">
+        <p style="font-style: italic; color: var(--gold-light);">
+          "Some flavours belong to everyday meals. Some are made for a special moment."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Edition Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="product-grid" id="specialGrid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="product-card" style="border-color: var(--gold-primary);">
+          <div class="card-image-wrap">
+            <img src="assets/products/hero.jpg" alt="KERALA GOLD — Roasted Duck Pickle" class="product-img" onerror="this.src='assets/products/hero.jpg'">
+            <span class="card-badge" style="background: var(--gold-primary); color: #000;">DEMO CONCEPT</span>
+          </div>
+          <div class="card-content">
+            <span class="category-tag">LIMITED BATCH #001</span>
+            <h3 class="product-title">KERALA GOLD — Roasted Duck Pickle</h3>
+            <p class="product-desc">Rare traditional Malabar roasted duck pickle cooked in clarified ghee and hand-pounded spices.</p>
+            <div class="product-footer">
+              <div class="price-box">
+                <span class="price-amount">₹350</span>
+                <span class="price-size">300g Ceramic Jar</span>
+              </div>
+              <button class="add-btn" style="opacity: 0.7; cursor: not-allowed;">COMING SOON</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" style="border-color: var(--gold-primary);">
+          <div class="card-image-wrap">
+            <img src="assets/products/hero.jpg" alt="COASTAL RESERVE — Smoked Kingfish" class="product-img" onerror="this.src='assets/products/hero.jpg'">
+            <span class="card-badge" style="background: var(--gold-primary); color: #000;">DEMO CONCEPT</span>
+          </div>
+          <div class="card-content">
+            <span class="category-tag">LIMITED BATCH #002</span>
+            <h3 class="product-title">COASTAL RESERVE — Smoked Kingfish</h3>
+            <p class="product-desc">Wood-smoked kingfish steaks pickled with wild Kampot pepper and shallots.</p>
+            <div class="product-footer">
+              <div class="price-box">
+                <span class="price-amount">₹380</span>
+                <span class="price-size">300g Glass Jar</span>
+              </div>
+              <button class="add-btn" style="opacity: 0.7; cursor: not-allowed;">COMING SOON</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Cart -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p>© 2026 SAKKEES FOOD PRODUCTS. "Where Every Jar Feels Like Home."</p>
+    </div>
+  </footer>
+
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>YOUR SHOPPING BAG</h3>
+      <button class="close-cart-btn">&times;</button>
+    </div>
+    <div class="cart-items-body" id="cartDrawerItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal-row"><span>Subtotal:</span><span class="subtotal-amount" id="cartSubtotal">₹0</span></div>
+      <a href="checkout.html" class="btn-primary" style="width: 100%; text-align: center;">PROCEED TO CHECKOUT</a>
+    </div>
+  </aside>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

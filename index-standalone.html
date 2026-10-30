@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAKKEES Food Products | Traditional Kerala Pickles</title>
+  <meta name="description" content="Traditional Kerala-inspired pickles made with carefully selected ingredients, bold flavours and recipes rooted in home cooking. Where Every Jar Feels Like Home.">
+  
+  <style>
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Core Styles & Design Tokens
+   Heritage + Luxury + Rustic + Modern Visual Direction
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  /* Brand Color Tokens */
+  --bg-primary: #07180F;
+  --bg-surface: #0B2115;
+  --bg-card: #102A1A;
+  --bg-card-hover: #153522;
+  --bg-overlay: rgba(5, 18, 11, 0.85);
+
+  /* Gold Tokens */
+  --gold-primary: #C99A3D;
+  --gold-light: #E5B95A;
+  --gold-dark: #9A7223;
+  --gold-glow: rgba(201, 154, 61, 0.25);
+  --gold-border: rgba(201, 154, 61, 0.35);
+
+  /* Cream Tokens */
+  --cream-primary: #F5EBD3;
+  --cream-muted: #D9CBAC;
+  --cream-soft: #EFE4C8;
+
+  /* Accent Colors */
+  --red-spicy: #B83526;
+  --olive-leaf: #5B7045;
+  --terracotta: #A45037;
+  --deep-plum: #4A223B;
+  --sea-blue: #1C4D5E;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transitions & Shadows */
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.4);
+  --shadow-gold: 0 0 25px rgba(201, 154, 61, 0.2);
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--cream-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--cream-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, .brand-font {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--cream-primary);
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.3;
+}
+
+p {
+  color: var(--cream-muted);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--cream-primary);
+}
+
+/* Gold Text Accent Class */
+.gold-text {
+  color: var(--gold-primary);
+  background: linear-gradient(135deg, #F3D286 0%, #C99A3D 50%, #E5B95A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.italic-accent {
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold-light);
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Subtle Gold Divider */
+.ornate-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 1.5rem 0 2.5rem 0;
+}
+
+.ornate-divider::before,
+.ornate-divider::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.ornate-divider span {
+  color: var(--gold-primary);
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Component Styles
+   Header, Navigation, Badges, Cards, Studio, Cart Drawer, Footer
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Header & Navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 0;
+  transition: var(--transition-smooth);
+  background: linear-gradient(180deg, rgba(7, 24, 15, 0.95) 0%, rgba(7, 24, 15, 0.6) 100%);
+  border-bottom: 1px solid rgba(201, 154, 61, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.site-header.scrolled {
+  padding: 0.8rem 0;
+  background: var(--bg-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border-bottom-color: var(--gold-border);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #102A1A 0%, #07180F 100%);
+  box-shadow: var(--shadow-gold);
+}
+
+.logo-badge svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--gold-primary);
+}
+
+.brand-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title .main-name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cream-primary);
+  line-height: 1;
+}
+
+.brand-title .sub-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold-light);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--gold-primary);
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.cart-icon-btn {
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  color: var(--cream-primary);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.cart-icon-btn:hover {
+  border-color: var(--gold-primary);
+  background: rgba(201, 154, 61, 0.1);
+  transform: translateY(-2px);
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--gold-primary);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.7rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cream-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Badges
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #D4A745 0%, #A3792B 100%);
+  color: #07180F;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--gold-light);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(201, 154, 61, 0.25);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #F3D286 0%, #C99A3D 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 154, 61, 0.4);
+  color: #000;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--cream-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold-primary);
+  background: rgba(201, 154, 61, 0.1);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #07180F;
+  border: 1px solid #20BD5A;
+  font-weight: 700;
+}
+
+.btn-whatsapp:hover {
+  background: #20BD5A;
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   Quality Strips & Badges
+   -------------------------------------------------------------------------- */
+.quality-strip {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 2.2rem 0;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.badge-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 1rem 1.2rem;
+  background: rgba(16, 42, 26, 0.6);
+  border: 1px solid rgba(201, 154, 61, 0.2);
+  border-radius: var(--border-radius);
+  transition: var(--transition-smooth);
+}
+
+.badge-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #153522 0%, #0B2115 100%);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.badge-text h4 {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-primary);
+  margin-bottom: 2px;
+}
+
+.badge-text p {
+  font-size: 0.78rem;
+  color: var(--cream-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Product Cards & Grid
+   -------------------------------------------------------------------------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 154, 61, 0.2);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5), var(--shadow-gold);
+}
+
+.card-image-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
+  background: radial-gradient(circle, #153522 0%, #07180F 100%);
+}
+
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.08);
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(7, 24, 15, 0.85);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.category-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-primary);
+  margin-bottom: 6px;
+}
+
+.product-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cream-primary);
+  margin-bottom: 8px;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: var(--cream-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201, 154, 61, 0.15);
+}
+
+.price-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-amount {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.price-size {
+  font-size: 0.75rem;
+  color: var(--cream-muted);
+}
+
+.add-btn {
+  background: rgba(201, 154, 61, 0.15);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.add-btn:hover {
+  background: var(--gold-primary);
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   Filter Tabs
+   -------------------------------------------------------------------------- */
+.filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(201, 154, 61, 0.3);
+  color: var(--cream-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--gold-primary);
+  border-color: var(--gold-light);
+  color: #07180F;
+  box-shadow: var(--shadow-gold);
+}
+
+/* --------------------------------------------------------------------------
+   Cart Drawer
+   -------------------------------------------------------------------------- */
+.cart-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-smooth);
+}
+
+.cart-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--gold-border);
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+.cart-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-header h3 {
+  font-size: 1.3rem;
+  color: var(--gold-light);
+}
+
+.close-cart-btn {
+  background: none;
+  border: none;
+  color: var(--cream-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.close-cart-btn:hover {
+  color: var(--gold-primary);
+}
+
+.cart-items-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(201, 154, 61, 0.15);
+}
+
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+  border: 1px solid var(--gold-border);
+}
+
+.cart-item-info {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--cream-primary);
+}
+
+.cart-item-meta {
+  font-size: 0.8rem;
+  color: var(--gold-primary);
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  background: transparent;
+  color: var(--cream-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.qty-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+}
+
+.cart-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--gold-border);
+  background: var(--bg-card);
+}
+
+.subtotal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.subtotal-amount {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--gold-border);
+  padding: 4rem 0 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--cream-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--gold-primary);
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 154, 61, 0.15);
+  font-size: 0.85rem;
+  color: var(--cream-muted);
+}
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Responsive Design Rules
+   Breakpoints for Tablet & Mobile Layouts
+   ========================================================================== */
+
+/* Mobile Navigation Drawer */
+@media (max-width: 992px) {
+  .hamburger-btn {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--gold-border);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6rem 2rem 2rem 2rem;
+    gap: 1.5rem;
+    transition: left 0.4s ease;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+
+  .nav-menu.open {
+    left: 0;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-title .main-name {
+    font-size: 1.2rem;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Shared Header Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <div class="brand-title">
+          <span class="main-name">SAKKEES</span>
+          <span class="sub-tag">FOOD PRODUCTS</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="flavours.html" class="nav-link">FLAVOURS</a></li>
+          <li><a href="special-pickles.html" class="nav-link">SPECIAL EDITION</a></li>
+          <li><a href="combo-offers.html" class="nav-link">COMBOS</a></li>
+          <li><a href="story.html" class="nav-link">OUR STORY</a></li>
+          <li><a href="gifts.html" class="nav-link">GIFTS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-icon-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count-badge">0</span>
+        </button>
+        <button class="hamburger-btn" aria-label="Toggle Mobile Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="position: relative; min-height: 90vh; display: flex; align-items: center; background: radial-gradient(circle at center, rgba(16,42,26,0.6) 0%, rgba(7,24,15,0.95) 100%), url('assets/images/hero.jpg') center/cover no-repeat; padding-top: 6rem;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div style="max-width: 650px;">
+        <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 1rem;">PREMIUM QUALITY • EST. 2026</span>
+        <h1 style="margin-bottom: 1.2rem;">A Taste That Takes You <span class="italic-accent">Home</span></h1>
+        <p style="font-size: 1.15rem; color: var(--cream-soft); margin-bottom: 2rem; line-height: 1.7;">
+          Traditional Kerala-inspired pickles, prepared with carefully selected ingredients and the warmth of homemade cooking.
+        </p>
+        <div class="hero-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="flavours.html" class="btn-primary">EXPLORE FLAVOURS</a>
+          <a href="checkout.html" class="btn-secondary">SHOP NOW</a>
+        </div>
+        <p style="margin-top: 1.5rem; font-style: italic; color: var(--gold-light); font-size: 0.9rem;">
+          "Where Every Jar Feels Like Home."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality / Trust Strip -->
+  <section class="quality-strip">
+    <div class="container">
+      <div class="badges-grid">
+        <div class="badge-card">
+          <div class="badge-icon">♥</div>
+          <div class="badge-text">
+            <h4>HANDMADE WITH LOVE</h4>
+            <p>Crafted in small home batches</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-icon">🌿</div>
+          <div class="badge-text">
+            <h4>NO PRESERVATIVES</h4>
+            <p>100% authentic natural ingredients</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-icon">✨</div>
+          <div class="badge-text">
+            <h4>NO ARTIFICIAL COLORS</h4>
+            <p>Pure rich Kerala spice blends</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-icon">⭐</div>
+          <div class="badge-text">
+            <h4>TRUSTED QUALITY</h4>
+            <p>Hygienically prepared & packed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Now Section (Inspired by Brand Poster) -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;">PICK YOUR FLAVOUR</span>
+        <h2>AVAILABLE NOW!</h2>
+        <div class="ornate-divider"><span>◆</span></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: var(--border-radius-lg); padding: 2.5rem; margin-bottom: 3rem;">
+        <div style="border-right: 1px solid rgba(201,154,61,0.2); padding-right: 1.5rem;">
+          <h3 style="color: var(--gold-light); border-bottom: 1px solid var(--gold-border); padding-bottom: 0.5rem; margin-bottom: 1rem;">NON-VEG ITEMS</h3>
+          <ul style="list-style: none; line-height: 2;">
+            <li>🔸 <strong>Beef Pickle</strong> — Rich & Fiery Roasted Beef</li>
+            <li>🔸 <strong>Chicken Pickle</strong> — Aromatic Home-Style Spiced Chicken</li>
+            <li>🔸 <strong>Prawns Pickle</strong> — Fresh Coastal Prawns</li>
+            <li>🔸 <strong>Dry Prawns Pickle</strong> — Crunchy Sun-Dried Prawns</li>
+            <li>🔸 <strong>Fish Choora Pickle</strong> — Prime Tuna Chunk Pickle</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color: var(--gold-light); border-bottom: 1px solid var(--gold-border); padding-bottom: 0.5rem; margin-bottom: 1rem;">OTHER FLAVOURS</h3>
+          <ul style="list-style: none; line-height: 2;">
+            <li>🔹 <strong>Garlic Pickle</strong> — Whole Whole Spiced Garlic</li>
+            <li>🔹 <strong>Dates Pickle</strong> — Sweet & Tangy Kerala Dates</li>
+            <li>🔹 <strong>Lemon Pickle</strong> — Traditional Sun-Cured Lemon</li>
+            <li>🔹 <strong>Dates & Lemon Mix</strong> — Sweet & Tangy Balance</li>
+            <li>🔹 <strong>Kadumanga Pickle</strong> — Tender Raw Mango</li>
+            <li>🔹 <strong>Beetroot Pickle</strong> — Earthy & Spiced Beetroot</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Collection Grid Section -->
+  <section class="section-padding" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="text-center">
+        <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;">OUR FLAVOUR COLLECTION</span>
+        <h2>Handcrafted Kerala Pickles</h2>
+        <div class="ornate-divider"><span>◆</span></div>
+
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">ALL</button>
+          <button class="filter-btn" data-filter="non-veg">NON-VEG</button>
+          <button class="filter-btn" data-filter="seafood">SEAFOOD</button>
+          <button class="filter-btn" data-filter="veg">VEGETARIAN</button>
+          <button class="filter-btn" data-filter="fruit">FRUIT</button>
+          <button class="filter-btn" data-filter="mixed">MIXED</button>
+        </div>
+      </div>
+
+      <div id="homeProductGrid" class="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- Pickle Studio / Build Your Box -->
+  <section class="section-padding">
+    <div class="container">
+      <div id="pickleStudioContainer"></div>
+    </div>
+  </section>
+
+  <!-- Brand Story Teaser Section -->
+  <section class="section-padding" style="background: radial-gradient(circle at center, #102A1A 0%, #07180F 100%); border-top: 1px solid var(--gold-border);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div>
+          <img src="assets/images/poster.jpg" alt="SAKKEES Brand Poster" style="width: 100%; border-radius: var(--border-radius-lg); border: 1px solid var(--gold-border); box-shadow: var(--shadow-card);" onerror="this.src='assets/products/hero.jpg'">
+        </div>
+        <div>
+          <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;">OUR HERITAGE</span>
+          <h2>Tradition in Every <span class="italic-accent">Jar</span></h2>
+          <p style="margin: 1.5rem 0; font-size: 1.05rem; line-height: 1.8;">
+            SAKKEES brings the taste of Kerala's traditional kitchen into a modern jar. Every batch is prepared with carefully selected ingredients, authentic spices and recipes inspired by generations of home cooking.
+          </p>
+          <a href="story.html" class="btn-primary">READ OUR STORY</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding">
+    <div class="container" style="max-width: 800px;">
+      <div class="text-center">
+        <h2>Frequently Asked Questions</h2>
+        <div class="ornate-divider"><span>◆</span></div>
+      </div>
+
+      <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="faq-item" style="background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: 8px; padding: 1.2rem;">
+          <h4 class="faq-question" style="cursor: pointer; color: var(--gold-light); font-size: 1.1rem; display: flex; justify-content: space-between;">What pickles are available? <span>+</span></h4>
+          <p class="faq-answer" style="margin-top: 0.8rem; font-size: 0.95rem;">We offer a wide selection including Beef Pickle, Chicken Pickle, Prawns Pickle, Dry Prawns, Fish Choora, Garlic, Dates, Lemon, Dates & Lemon Mix, Kadumanga, Beetroot, and Uppilittathu preserved items.</p>
+        </div>
+        <div class="faq-item" style="background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: 8px; padding: 1.2rem;">
+          <h4 class="faq-question" style="cursor: pointer; color: var(--gold-light); font-size: 1.1rem; display: flex; justify-content: space-between;">How do I place an order? <span>+</span></h4>
+          <p class="faq-answer" style="margin-top: 0.8rem; font-size: 0.95rem;">You can add items to your bag on our website and click "Place Order via WhatsApp". It formats your order details automatically and sends them to 7025265694 for quick confirmation.</p>
+        </div>
+        <div class="faq-item" style="background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: 8px; padding: 1.2rem;">
+          <h4 class="faq-question" style="cursor: pointer; color: var(--gold-light); font-size: 1.1rem; display: flex; justify-content: space-between;">Are preservatives or artificial colors added? <span>+</span></h4>
+          <p class="faq-answer" style="margin-top: 0.8rem; font-size: 0.95rem;">No. All SAKKEES pickles are 100% homemade with no artificial colors or added chemical preservatives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final WhatsApp Order CTA -->
+  <section class="section-padding text-center" style="background: var(--bg-surface); border-top: 1px solid var(--gold-border);">
+    <div class="container">
+      <h2>BRING HOME THE FLAVOUR.</h2>
+      <p style="margin: 1rem 0 2rem 0; font-size: 1.1rem;">Choose your favourite jar and make every meal a little more special.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="flavours.html" class="btn-primary">EXPLORE FLAVOURS</a>
+        <a href="https://wa.me/917025265694" target="_blank" class="btn-primary btn-whatsapp">ORDER VIA WHATSAPP (7025265694)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-title">
+            <span class="main-name">SAKKEES</span>
+            <span class="sub-tag">FOOD PRODUCTS</span>
+          </div>
+          <p>"WHERE EVERY JAR FEELS LIKE HOME."</p>
+        </div>
+        <div class="footer-col">
+          <h4>QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="flavours.html">Flavours</a></li>
+            <li><a href="special-pickles.html">Special Edition</a></li>
+            <li><a href="combo-offers.html">Combo Packs</a></li>
+            <li><a href="story.html">Our Story</a></li>
+            <li><a href="gifts.html">Gift Boxes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>ORDER & CONTACT</h4>
+          <p>WhatsApp Order: <strong>7025265694</strong></p>
+          <p>Instagram: <strong>@sakkees_pickles</strong></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 SAKKEES FOOD PRODUCTS. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Out Shopping Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>YOUR SHOPPING BAG</h3>
+      <button class="close-cart-btn" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items-body" id="cartDrawerItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal-row">
+        <span>Subtotal:</span>
+        <span class="subtotal-amount" id="cartSubtotal">₹0</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--cream-muted); margin-bottom: 1rem;">Delivery charges calculated at checkout.</p>
+      <a href="checkout.html" class="btn-primary" style="width: 100%; text-align: center;">PROCEED TO CHECKOUT</a>
+    </div>
+  </aside>
+
+  <script>
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Central Config File
+   ADMIN-READY CONFIGURATION
+   ========================================================================== */
+
+const SAKKEES_CONFIG = {
+  brandName: "SAKKEES FOOD PRODUCTS",
+  shortName: "SAKKEES",
+  tagline: "Where Every Jar Feels Like Home.",
+  heroHeadline: "A Taste That Takes You Home",
+  heroSubtitle: "Traditional Kerala-inspired pickles, prepared with carefully selected ingredients and the warmth of homemade cooking.",
+  whatsappNumber: "7025265694",
+  whatsappFormatted: "+91 70252 65694",
+  instagramHandle: "@sakkees_pickles",
+  instagramUrl: "https://instagram.com/sakkees_pickles",
+  establishedYear: "2026",
+  currencySymbol: "₹",
+  deliveryDisclaimer: "Delivery charges calculated at checkout."
+};
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Central Product Database
+   ========================================================================== */
+
+const SAKKEES_PRODUCTS = [
+  // --- NON-VEG PICKLES ---
+  {
+    id: "beef-pickle",
+    name: "Kerala Beef Pickle",
+    category: "non-veg",
+    tag: "Bestseller",
+    description: "Tender chunks of slow-cooked beef infused with roasted Kerala spices, mustard, garlic, and curry leaves.",
+    spiceLevel: 4,
+    sizes: [
+      { size: "200g", price: 150 },
+      { size: "250g", price: 200 }
+    ],
+    available: true,
+    image: "assets/products/beef.jpg",
+    flavourProfile: "Bold, Spicy & Deeply Savoury"
+  },
+  {
+    id: "chicken-pickle",
+    name: "Kerala Chicken Pickle",
+    category: "non-veg",
+    tag: "Popular",
+    description: "Authentic Kerala home-style chicken pickle marinated in aromatic gingelly oil and crushed red chillies.",
+    spiceLevel: 3,
+    sizes: [
+      { size: "200g", price: 140 },
+      { size: "250g", price: 180 }
+    ],
+    available: true,
+    image: "assets/products/chicken.jpg",
+    flavourProfile: "Warm, Aromatic & Fiery"
+  },
+
+  // --- SEAFOOD PICKLES ---
+  {
+    id: "prawns-pickle",
+    name: "Fresh Prawns Pickle",
+    category: "seafood",
+    tag: "Coastal Classic",
+    description: "Juicy fresh prawns tossed in traditional Kerala spice blend, fenugreek, and tangy vinegar.",
+    spiceLevel: 4,
+    sizes: [
+      { size: "200g", price: 160 },
+      { size: "250g", price: 200 }
+    ],
+    available: true,
+    image: "assets/products/prawns.jpg",
+    flavourProfile: "Rich Coastal Seafood & Tangy Spice"
+  },
+  {
+    id: "dry-prawns-pickle",
+    name: "Dry Prawns Pickle",
+    category: "seafood",
+    tag: "Traditional",
+    description: "Sun-dried prawns roasted to perfection and pickled with garlic, green chillies, and mustard.",
+    spiceLevel: 3,
+    sizes: [
+      { size: "50g", price: 25 },
+      { size: "200g", price: 70 },
+      { size: "250g", price: 80 }
+    ],
+    available: true,
+    image: "assets/products/prawns.jpg",
+    flavourProfile: "Crunchy, Savoury & Deeply Aromatic"
+  },
+  {
+    id: "fish-pickle",
+    name: "Fish Choora Pickle",
+    category: "seafood",
+    tag: "Heritage",
+    description: "Prime tuna fish chunks stir-fried with turmeric, ginger, garlic, and fried curry leaves.",
+    spiceLevel: 4,
+    sizes: [
+      { size: "200g", price: 130 },
+      { size: "250g", price: 150 }
+    ],
+    available: true,
+    image: "assets/products/beef.jpg",
+    flavourProfile: "Meaty Seafood & Bold Spice"
+  },
+
+  // --- VEGETARIAN & FRUIT PICKLES ---
+  {
+    id: "garlic-pickle",
+    name: "Garlic Pickle",
+    category: "veg",
+    tag: "Homemade",
+    description: "Whole tender garlic cloves steeped in mustard oil, fenugreek powder, and chili flakes.",
+    spiceLevel: 3,
+    sizes: [
+      { size: "50g", price: 25 },
+      { size: "200g", price: 75 },
+      { size: "250g", price: 90 }
+    ],
+    available: true,
+    image: "assets/products/lemon.jpg",
+    flavourProfile: "Pungent, Warm & Digestive"
+  },
+  {
+    id: "dates-pickle",
+    name: "Sweet & Spicy Dates Pickle",
+    category: "fruit",
+    tag: "Sweet & Tangy",
+    description: "Premium plump dates cooked in vinegar, red chili powder, and crushed green chillies.",
+    spiceLevel: 2,
+    sizes: [
+      { size: "50g", price: 25 },
+      { size: "200g", price: 70 },
+      { size: "250g", price: 80 }
+    ],
+    available: true,
+    image: "assets/products/dates.jpg",
+    flavourProfile: "Sweet, Tangy & Mildly Spiced"
+  },
+  {
+    id: "lemon-pickle",
+    name: "Traditional Lemon Pickle",
+    category: "fruit",
+    tag: "Classic",
+    description: "Sun-cured Kerala lemons aged naturally with asafoetida, chili powder, and mustard seeds.",
+    spiceLevel: 3,
+    sizes: [
+      { size: "50g", price: 15 },
+      { size: "250g", price: 60 },
+      { size: "500g", price: 110 }
+    ],
+    available: true,
+    image: "assets/products/lemon.jpg",
+    flavourProfile: "Zesty, Tangy & Aromatic"
+  },
+  {
+    id: "dates-lemon-mix",
+    name: "Dates & Lemon Mix Pickle",
+    category: "mixed",
+    tag: "Special Blend",
+    description: "A harmonious fusion of tangy sun-cured lemons and sweet succulent dates.",
+    spiceLevel: 2,
+    sizes: [
+      { size: "50g", price: 25 },
+      { size: "250g", price: 70 }
+    ],
+    available: true,
+    image: "assets/products/dates.jpg",
+    flavourProfile: "Sweet & Tangy Balance"
+  },
+  {
+    id: "dates-kondattam-mix",
+    name: "Dates & Kondattam Mix Pickle",
+    category: "mixed",
+    tag: "Unique Recipe",
+    description: "Sun-dried Kondattam curd chillies paired with sweet dates and roasted spices.",
+    spiceLevel: 3,
+    sizes: [
+      { size: "50g", price: 20 },
+      { size: "250g", price: 75 }
+    ],
+    available: true,
+    image: "assets/products/hero.jpg",
+    flavourProfile: "Smoky, Crunchy & Sweet-Spicy"
+  },
+  {
+    id: "kadumanga-pickle",
+    name: "Tender Mango (Kadumanga) Pickle",
+    category: "fruit",
+    tag: "Kerala Favourite",
+    description: "Baby tender mangoes salted and spiced whole in traditional dark sesame oil blend.",
+    spiceLevel: 4,
+    sizes: [
+      { size: "50g", price: 15 },
+      { size: "250g", price: 60 },
+      { size: "500g", price: 120 }
+    ],
+    available: true,
+    image: "assets/products/hero.jpg",
+    flavourProfile: "Crisp, Sour & Fiery Red Chili"
+  },
+  {
+    id: "beetroot-pickle",
+    name: "Beetroot Pickle",
+    category: "veg",
+    tag: "Fresh & Tangy",
+    description: "Grated garden-fresh beetroots spiced with mustard, ginger, green chillies, and curry leaves.",
+    spiceLevel: 2,
+    sizes: [
+      { size: "200g", price: 50 },
+      { size: "250g", price: 60 }
+    ],
+    available: true,
+    image: "assets/products/lemon.jpg",
+    flavourProfile: "Earthy, Sweet & Lightly Spiced"
+  },
+
+  // --- UPPILITTATHU / PRESERVED ---
+  {
+    id: "uppilittathu-mango",
+    name: "Mango Uppilittathu",
+    category: "uppilittathu",
+    tag: "Brine Preserved",
+    description: "Raw green mango slices cured in pure rock salt brine and vinegar.",
+    spiceLevel: 1,
+    sizes: [{ size: "Unit Pack", price: 35 }],
+    available: true,
+    image: "assets/products/hero.jpg",
+    flavourProfile: "Salty, Sour & Refreshing"
+  },
+  {
+    id: "uppilittathu-pineapple",
+    name: "Pineapple Uppilittathu",
+    category: "uppilittathu",
+    tag: "Brine Preserved",
+    description: "Fresh pineapple chunks soaked in mild chili-salted brine.",
+    spiceLevel: 1,
+    sizes: [{ size: "Unit Pack", price: 35 }],
+    available: true,
+    image: "assets/products/hero.jpg",
+    flavourProfile: "Sweet, Salty & Juicy"
+  }
+];
+
+// Special Edition Collections (DEMO DATA)
+const SAKKEES_SPECIAL_EDITIONS = [
+  {
+    id: "kerala-gold-special",
+    name: "KERALA GOLD — Roasted Duck Pickle",
+    editionNo: "LIMITED BATCH #001",
+    description: "Rare traditional Malabar roasted duck pickle cooked in clarified ghee and hand-pounded spices.",
+    sizes: [{ size: "300g Ceramic Jar", price: 350 }],
+    badge: "DEMO CONCEPT",
+    available: false
+  },
+  {
+    id: "coastal-reserve-special",
+    name: "COASTAL RESERVE — Smoked Kingfish",
+    editionNo: "LIMITED BATCH #002",
+    description: "Wood-smoked kingfish steaks pickled with wild Kampot pepper and shallots.",
+    sizes: [{ size: "300g Glass Jar", price: 380 }],
+    badge: "DEMO CONCEPT",
+    available: false
+  }
+];
+
+// Combo Offers (DEMO DATA)
+const SAKKEES_COMBOS = [
+  {
+    id: "seafood-trio-combo",
+    name: "Seafood Lovers Trio Box",
+    included: ["Fresh Prawns Pickle (200g)", "Fish Choora Pickle (200g)", "Dry Prawns Pickle (200g)"],
+    totalPrice: 350,
+    originalPrice: 380,
+    savingsText: "Save ₹30",
+    image: "assets/products/prawns.jpg"
+  },
+  {
+    id: "heritage-trio-combo",
+    name: "Kerala Favourites Trio Box",
+    included: ["Kerala Beef Pickle (200g)", "Lemon Pickle (250g)", "Sweet Dates Pickle (200g)"],
+    totalPrice: 270,
+    originalPrice: 290,
+    savingsText: "Save ₹20",
+    image: "assets/products/beef.jpg"
+  }
+];
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Shopping Cart Engine
+   LocalStorage persistence, Subtotal Calculation, WhatsApp Message Formatter
+   ========================================================================== */
+
+class CartEngine {
+  constructor() {
+    this.cartKey = 'sakkees_cart_items';
+    this.items = this.loadCart();
+    this.initEventListeners();
+    this.updateUI();
+  }
+
+  loadCart() {
+    try {
+      const saved = localStorage.getItem(this.cartKey);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      console.error('Error loading cart:', e);
+      return [];
+    }
+  }
+
+  saveCart() {
+    try {
+      localStorage.setItem(this.cartKey, JSON.stringify(this.items));
+      this.updateUI();
+    } catch (e) {
+      console.error('Error saving cart:', e);
+    }
+  }
+
+  addItem(product, selectedSize, price, quantity = 1) {
+    const existingIndex = this.items.findIndex(
+      item => item.id === product.id && item.size === selectedSize
+    );
+
+    if (existingIndex > -1) {
+      this.items[existingIndex].quantity += quantity;
+    } else {
+      this.items.push({
+        id: product.id,
+        name: product.name,
+        size: selectedSize,
+        price: price,
+        quantity: quantity,
+        image: product.image
+      });
+    }
+
+    this.saveCart();
+    this.showToast(`Added ${product.name} (${selectedSize}) to bag!`);
+    this.openDrawer();
+  }
+
+  removeItem(index) {
+    if (index >= 0 && index < this.items.length) {
+      this.items.splice(index, 1);
+      this.saveCart();
+    }
+  }
+
+  updateQuantity(index, change) {
+    if (index >= 0 && index < this.items.length) {
+      this.items[index].quantity += change;
+      if (this.items[index].quantity <= 0) {
+        this.removeItem(index);
+      } else {
+        this.saveCart();
+      }
+    }
+  }
+
+  clearCart() {
+    this.items = [];
+    this.saveCart();
+  }
+
+  getTotalCount() {
+    return this.items.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  getSubtotal() {
+    return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  }
+
+  updateUI() {
+    // Update badge numbers across site
+    const countBadges = document.querySelectorAll('.cart-count-badge');
+    const totalCount = this.getTotalCount();
+    countBadges.forEach(b => {
+      b.textContent = totalCount;
+      b.style.display = totalCount > 0 ? 'flex' : 'none';
+    });
+
+    // Render cart items inside drawer if present
+    const drawerContainer = document.getElementById('cartDrawerItems');
+    const drawerSubtotal = document.getElementById('cartSubtotal');
+    
+    if (drawerContainer) {
+      if (this.items.length === 0) {
+        drawerContainer.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1rem; color: var(--cream-muted);">
+            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin-bottom: 1rem; color: var(--gold-primary);"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <p>Your bag is currently empty.</p>
+            <a href="flavours.html" class="btn-secondary" style="margin-top: 1.5rem; font-size: 0.8rem;">Explore Flavours</a>
+          </div>
+        `;
+      } else {
+        drawerContainer.innerHTML = this.items.map((item, idx) => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='assets/products/hero.jpg'">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-meta">${item.size} • ${SAKKEES_CONFIG.currencySymbol}${item.price}</div>
+              <div class="cart-item-qty">
+                <button class="qty-btn" onclick="cart.updateQuantity(${idx}, -1)">-</button>
+                <span>${item.quantity}</span>
+                <button class="qty-btn" onclick="cart.updateQuantity(${idx}, 1)">+</button>
+              </div>
+            </div>
+            <button onclick="cart.removeItem(${idx})" style="background:none; border:none; color: #b83526; cursor:pointer; font-size: 1.2rem;">&times;</button>
+          </div>
+        `).join('');
+      }
+    }
+
+    if (drawerSubtotal) {
+      drawerSubtotal.textContent = `${SAKKEES_CONFIG.currencySymbol}${this.getSubtotal()}`;
+    }
+  }
+
+  generateWhatsAppOrderLink(customerInfo = {}) {
+    if (this.items.length === 0) return '#';
+
+    let msg = `Hello SAKKEES,\nI would like to place an order from your website.\n\n*ORDER ITEMS:*\n`;
+    this.items.forEach((item, i) => {
+      msg += `${i + 1}. *${item.name}* (${item.size}) × ${item.quantity} = ₹${item.price * item.quantity}\n`;
+    });
+
+    msg += `\n*SUBTOTAL:* ₹${this.getSubtotal()}\n`;
+    msg += `_Delivery charges calculated upon confirmation._\n\n`;
+
+    if (customerInfo.name) {
+      msg += `*CUSTOMER DETAILS:*\n`;
+      msg += `Name: ${customerInfo.name}\n`;
+      msg += `Phone: ${customerInfo.phone}\n`;
+      if (customerInfo.address) msg += `Address: ${customerInfo.address}\n`;
+      if (customerInfo.notes) msg += `Notes: ${customerInfo.notes}\n`;
+    }
+
+    msg += `\nPlease confirm item availability and delivery time. Thank you!`;
+
+    const encoded = encodeURIComponent(msg);
+    return `https://wa.me/91${SAKKEES_CONFIG.whatsappNumber}?text=${encoded}`;
+  }
+
+  initEventListeners() {
+    document.addEventListener('click', (e) => {
+      const cartToggle = e.target.closest('.cart-icon-btn, .open-cart-trigger');
+      if (cartToggle) {
+        e.preventDefault();
+        this.openDrawer();
+      }
+
+      const closeBtn = e.target.closest('.close-cart-btn, .cart-drawer-overlay');
+      if (closeBtn) {
+        this.closeDrawer();
+      }
+    });
+  }
+
+  openDrawer() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer && overlay) {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }
+  }
+
+  closeDrawer() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer && overlay) {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+  }
+
+  showToast(message) {
+    let toast = document.getElementById('sakkeesToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'sakkeesToast';
+      toast.style.cssText = `
+        position: fixed; bottom: 25px; right: 25px; z-index: 9999;
+        background: #102A1A; border: 1px solid #C99A3D; color: #F5EBD3;
+        padding: 12px 24px; border-radius: 6px; box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        font-family: var(--font-sans); font-size: 0.9rem; transition: all 0.3s ease;
+        opacity: 0; transform: translateY(20px);
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(20px)';
+    }, 3000);
+  }
+}
+
+// Global Cart Instance
+const cart = new CartEngine();
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Category Filtering & Catalog Renderer
+   ========================================================================== */
+
+function renderProductGrid(containerId, category = 'all', searchQuery = '') {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  let filtered = SAKKEES_PRODUCTS;
+
+  if (category !== 'all') {
+    filtered = filtered.filter(p => p.category === category);
+  }
+
+  if (searchQuery.trim() !== '') {
+    const q = searchQuery.toLowerCase();
+    filtered = filtered.filter(p => 
+      p.name.toLowerCase().includes(q) || 
+      p.description.toLowerCase().includes(q) ||
+      p.flavourProfile.toLowerCase().includes(q)
+    );
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--cream-muted);">
+        <h3>No flavours found</h3>
+        <p>Try selecting another category or clear your search query.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map(product => {
+    const firstSize = product.sizes[0];
+    return `
+      <div class="product-card" data-category="${product.category}">
+        <div class="card-image-wrap">
+          <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.src='assets/products/hero.jpg'">
+          ${product.tag ? `<span class="card-badge">${product.tag}</span>` : ''}
+        </div>
+        <div class="card-content">
+          <span class="category-tag">${product.category.toUpperCase()}</span>
+          <h3 class="product-title">${product.name}</h3>
+          <p class="product-desc">${product.description}</p>
+          <div class="product-footer">
+            <div class="price-box">
+              <span class="price-amount">${SAKKEES_CONFIG.currencySymbol}${firstSize.price}</span>
+              <span class="price-size">for ${firstSize.size}</span>
+            </div>
+            <button class="add-btn" onclick="openProductModal('${product.id}')">VIEW / ADD</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function initCategoryFilters(gridContainerId) {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-filter') || 'all';
+      renderProductGrid(gridContainerId, cat);
+    });
+  });
+}
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Pickle Studio (Build Your Own Box)
+   ========================================================================== */
+
+class PickleStudio {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.selectedFlavours = [];
+    if (this.container) {
+      this.init();
+    }
+  }
+
+  init() {
+    this.render();
+  }
+
+  render() {
+    this.container.innerHTML = `
+      <div style="background: var(--bg-card); border: 1px solid var(--gold-border); border-radius: var(--border-radius-lg); padding: 2.5rem; max-width: 900px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span style="color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem;">PICKLE STUDIO</span>
+          <h2 style="margin-top: 5px;">Build Your Custom Kerala Jar Box</h2>
+          <p>Select your favourite traditional flavours below to curate a personalized SAKKEES box.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          ${SAKKEES_PRODUCTS.slice(0, 8).map(p => `
+            <div class="studio-item ${this.isSelected(p.id) ? 'selected' : ''}" 
+                 onclick="studio.toggleSelect('${p.id}')"
+                 style="background: var(--bg-surface); border: 1px solid ${this.isSelected(p.id) ? 'var(--gold-primary)' : 'rgba(201,154,61,0.2)'}; padding: 1rem; border-radius: 8px; cursor: pointer; text-align: center; transition: var(--transition-smooth);">
+              <img src="${p.image}" alt="${p.name}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 8px;" onerror="this.src='assets/products/hero.jpg'">
+              <div style="font-family: var(--font-serif); font-size: 0.95rem; font-weight: 600;">${p.name}</div>
+              <div style="font-size: 0.8rem; color: var(--gold-light); margin-top: 4px;">₹${p.sizes[0].price} (${p.sizes[0].size})</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div style="background: var(--bg-surface); border-top: 1px solid var(--gold-border); padding: 1.5rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="font-size: 0.85rem; color: var(--cream-muted);">YOUR BOX SELECTION:</div>
+            <div style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--gold-light); font-weight: 700;">
+              ${this.selectedFlavours.length} Item(s) Selected
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="text-align: right;">
+              <div style="font-size: 0.75rem; color: var(--cream-muted);">TOTAL BOX PRICE:</div>
+              <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold-primary); font-weight: 700;">
+                ₹${this.calculateTotal()}
+              </div>
+            </div>
+            <button class="btn-primary" onclick="studio.addBoxToCart()">ADD CUSTOM BOX TO BAG</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  isSelected(id) {
+    return this.selectedFlavours.some(f => f.id === id);
+  }
+
+  toggleSelect(id) {
+    const product = SAKKEES_PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    const idx = this.selectedFlavours.findIndex(f => f.id === id);
+    if (idx > -1) {
+      this.selectedFlavours.splice(idx, 1);
+    } else {
+      this.selectedFlavours.push({
+        id: product.id,
+        name: product.name,
+        price: product.sizes[0].price,
+        size: product.sizes[0].size,
+        image: product.image
+      });
+    }
+    this.render();
+  }
+
+  calculateTotal() {
+    return this.selectedFlavours.reduce((sum, f) => sum + f.price, 0);
+  }
+
+  addBoxToCart() {
+    if (this.selectedFlavours.length === 0) {
+      alert('Please select at least one flavour for your custom box.');
+      return;
+    }
+
+    const boxName = `Custom Box (${this.selectedFlavours.map(f => f.name).join(', ')})`;
+    cart.addItem({
+      id: `custom-box-${Date.now()}`,
+      name: boxName,
+      image: 'assets/products/hero.jpg'
+    }, 'Custom Box Pack', this.calculateTotal(), 1);
+
+    this.selectedFlavours = [];
+    this.render();
+  }
+}
+
+let studio = null;
+document.addEventListener('DOMContentLoaded', () => {
+  studio = new PickleStudio('pickleStudioContainer');
+});
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — AI Brand Voice Microcopy System
+   Local rule-based fallback brand dialogue engine
+   ========================================================================== */
+
+const SAKKEES_DIALOGUES = {
+  "beef-pickle": "Bold, fiery, and deeply comforting. Prepared like home.",
+  "chicken-pickle": "Slow-cooked spices meeting home warmth.",
+  "prawns-pickle": "A little taste of the Malabar coast in every bite.",
+  "dates-pickle": "Sweetness and spice sealed in perfection.",
+  "lemon-pickle": "Bright, tangy, and familiar.",
+  "garlic-pickle": "Pure warmth and wholesome garlic goodness.",
+  "general-cart": "Good choice. One more jar of home added.",
+  "gifts": "Give someone a genuine taste of Kerala heritage."
+};
+
+function getBrandMicrocopy(key) {
+  return SAKKEES_DIALOGUES[key] || "Where Every Jar Feels Like Home.";
+}
+
+/* ==========================================================================
+   SAKKEES FOOD PRODUCTS — Main App Logic
+   Header Scroll, Mobile Menu, Product Modals, FAQ Accordions
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHeaderScroll();
+  initMobileNav();
+  initFAQAccordions();
+  createProductModalDOM();
+});
+
+/* Header Scroll Effect */
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+}
+
+/* Mobile Nav Toggle */
+function initMobileNav() {
+  const hamburger = document.querySelector('.hamburger-btn');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      hamburger.innerHTML = navMenu.classList.contains('open') ? '&times;' : '&#9776;';
+    });
+  }
+}
+
+/* FAQ Accordion */
+function initFAQAccordions() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    }
+  });
+}
+
+/* Product Detail Modal */
+function createProductModalDOM() {
+  if (document.getElementById('productModal')) return;
+
+  const modalHTML = `
+    <div id="productModalOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,18,11,0.85); z-index: 3000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+      <div id="productModal" style="background: var(--bg-surface); border: 1px solid var(--gold-border); border-radius: var(--border-radius-lg); width: 90%; max-width: 750px; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); display: flex; flex-direction: column;">
+        <button onclick="closeProductModal()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--gold-light); font-size: 2rem; cursor: pointer; z-index: 10;">&times;</button>
+        <div id="modalBody" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;"></div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+let activeModalProduct = null;
+let activeSelectedSizeIndex = 0;
+
+function openProductModal(productId) {
+  const product = SAKKEES_PRODUCTS.find(p => p.id === productId);
+  if (!product) return;
+
+  activeModalProduct = product;
+  activeSelectedSizeIndex = 0;
+
+  const overlay = document.getElementById('productModalOverlay');
+  const modalBody = document.getElementById('modalBody');
+
+  if (overlay && modalBody) {
+    renderModalContent();
+    overlay.style.display = 'flex';
+  }
+}
+
+function renderModalContent() {
+  const product = activeModalProduct;
+  const currentSizeObj = product.sizes[activeSelectedSizeIndex];
+
+  const modalBody = document.getElementById('modalBody');
+  modalBody.innerHTML = `
+    <div style="background: radial-gradient(circle, #153522 0%, #07180F 100%); padding: 2rem; display: flex; align-items: center; justify-content: center;">
+      <img src="${product.image}" alt="${product.name}" style="max-width: 100%; max-height: 300px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));" onerror="this.src='assets/products/hero.jpg'">
+    </div>
+    <div style="padding: 2rem; display: flex; flex-direction: column;">
+      <span style="color: var(--gold-primary); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;">${product.category.toUpperCase()}</span>
+      <h2 style="font-size: 1.8rem; margin: 4px 0 10px 0;">${product.name}</h2>
+      <p style="font-size: 0.9rem; color: var(--cream-muted); margin-bottom: 1rem;">${product.description}</p>
+      
+      <div style="margin-bottom: 1rem;">
+        <span style="font-size: 0.8rem; color: var(--gold-light); display: block; margin-bottom: 4px;">FLAVOUR PROFILE:</span>
+        <span style="font-size: 0.88rem; color: var(--cream-primary); font-style: italic;">${product.flavourProfile}</span>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <span style="font-size: 0.8rem; color: var(--gold-light); display: block; margin-bottom: 8px;">SELECT JAR SIZE:</span>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${product.sizes.map((s, idx) => `
+            <button onclick="selectModalSize(${idx})" style="padding: 6px 14px; border-radius: 4px; border: 1px solid ${idx === activeSelectedSizeIndex ? 'var(--gold-primary)' : 'rgba(201,154,61,0.3)'}; background: ${idx === activeSelectedSizeIndex ? 'var(--gold-primary)' : 'transparent'}; color: ${idx === activeSelectedSizeIndex ? '#000' : 'var(--cream-primary)'}; font-weight: 600; font-size: 0.85rem; cursor: pointer;">
+              ${s.size} (₹${s.price})
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(201,154,61,0.2);">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--cream-muted); display: block;">PRICE</span>
+          <span style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--gold-light); font-weight: 700;">₹${currentSizeObj.price}</span>
+        </div>
+        <button class="btn-primary" onclick="addModalItemToBag()">ADD TO BAG</button>
+      </div>
+    </div>
+  `;
+}
+
+function selectModalSize(idx) {
+  activeSelectedSizeIndex = idx;
+  renderModalContent();
+}
+
+function addModalItemToBag() {
+  if (!activeModalProduct) return;
+  const currentSizeObj = activeModalProduct.sizes[activeSelectedSizeIndex];
+  cart.addItem(activeModalProduct, currentSizeObj.size, currentSizeObj.price, 1);
+  closeProductModal();
+}
+
+function closeProductModal() {
+  const overlay = document.getElementById('productModalOverlay');
+  if (overlay) overlay.style.display = 'none';
+}
+
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProductGrid('homeProductGrid', 'all');
+      initCategoryFilters('homeProductGrid');
+    });
+  </script>
+</body>
+</html>
